@@ -27,6 +27,33 @@ Smith_Waterman():
 6. avoid division by zero ( max possible score must be different from 0)
 7. return (max score / max possible score)
 
+build_distance_matrix():
+1. get sequence IDs in a list to preserve order
+2. get number of sequence
+3. create empty square matrix filled with zeros
+4. compare each pair of sequences
+    - calculate similarity score using smith-waterman
+    - convert similarity to distance
+    - fill both symmetric positions in matrix
+5. return distance matrix, sequence ids
+
+
+neighbor_joining()
+1. make copies to original inputs are not modified
+2. continue joining until only two nodes remain
+    -compute total distance for each taxon
+    -build Q matrix
+    -find pair with minimum Q value
+    -make sure i<j for easier removal later
+    -calculate branch lengths from i to j to new node
+    -prevent tiny negative values from floating point issues
+    -create new joined label in Newick format
+    -compute distances from new node to all remaining nodes
+    -build reduced distance matrix
+    -copy old distances among kept nodes
+    -add distances from the new node
+    -update labels
+3. final join when only two nodes remain
 ```
 
 # Successes
